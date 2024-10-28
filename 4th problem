@@ -1,0 +1,43 @@
+class Pair<T1, T2> {
+    private T1 first;
+    private T2 second;
+
+    public Pair(T1 first, T2 second) {
+        this.first = first;
+        this.second = second;
+    }
+
+    public void setFirst(T1 first) {
+        this.first = first;
+    }
+
+    public void setSecond(T2 second) {
+        this.second = second;
+    }
+
+    public T1 getFirst() {
+        return first;
+    }
+
+    public T2 getSecond() {
+        return second;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Pair<String, Integer> pair1 = new Pair<>("Age", 30);
+        Pair<Double, Boolean> pair2 = new Pair<>(3.14, true);
+        Pair<Character, String> pair3 = new Pair<>('A', "Apple");
+
+        System.out.println(pair1.getFirst() + ": " + pair1.getSecond());
+        System.out.println(pair2.getFirst() + ": " + pair2.getSecond());
+        System.out.println(pair3.getFirst() + ": " + pair3.getSecond());
+
+        pair1.setSecond(31);
+        pair2.setFirst(2.71);
+        
+        System.out.println("Updated Pair1: " + pair1.getFirst() + ": " + pair1.getSecond());
+        System.out.println("Updated Pair2: " + pair2.getFirst() + ": " + pair2.getSecond());
+    }
+}
