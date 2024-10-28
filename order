@@ -1,0 +1,25 @@
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+public class Order {
+    private String orderId;
+    private String productName;
+    private int quantity;
+    private double price;
+
+    public Order(String orderId, String productName, int quantity, double price) {
+        if (price < 0) {
+            throw new OrderException("Price cannot be negative.");
+        }
+        this.orderId = orderId;
+        this.productName = productName;
+        this.quantity = quantity;
+        this.price = price;
+    }
+}
