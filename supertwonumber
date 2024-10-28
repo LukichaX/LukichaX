@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        boolean isDD = true;
+        int firstNum = 0;
+        int secondNum = 0;
+
+        while(isDD){
+            System.out.println("Enter First Number(must be double digit): ");
+            firstNum = scanner.nextInt();
+            if(firstNum >= 10){
+                isDD = false;
+            }else {
+                System.out.println("Must be double digit!!!");
+            }
+        }
+
+        isDD = true;
+
+        while(isDD){
+            System.out.println("Enter Second Number(must be double digit): ");
+            secondNum = scanner.nextInt();
+            if(secondNum >= 10){
+                isDD = false;
+            }else {
+                System.out.println("Must be double digit!!!");
+            }
+        }
+
+        int result = firstNum*100 + secondNum;
+
+        if(result % firstNum*secondNum == 0){
+            System.out.println(result + "is dividable by" + firstNum + "*" + secondNum);
+        }else {
+            System.out.println("not dividable");
+        }
+    }
+}
