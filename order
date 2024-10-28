@@ -1,17 +1,11 @@
-import lombok.Getter;
-import lombok.Setter;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import java.util.Objects;
 
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
 public class Order {
     private String orderId;
     private String productName;
     private int quantity;
     private double price;
+
 
     public Order(String orderId, String productName, int quantity, double price) {
         if (price < 0) {
@@ -21,5 +15,71 @@ public class Order {
         this.productName = productName;
         this.quantity = quantity;
         this.price = price;
+    }
+
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setPrice(double price) {
+        if (price < 0) {
+            throw new OrderException("Price cannot be negative.");
+        }
+        this.price = price;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId='" + orderId + '\'' +
+                ", productName='" + productName + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                '}';
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return quantity == order.quantity &&
+                Double.compare(order.price, price) == 0 &&
+                orderId.equals(order.orderId) &&
+                productName.equals(order.productName);
+    }
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(orderId, productName, quantity, price);
     }
 }
